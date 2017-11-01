@@ -6,6 +6,9 @@ services:
     build: elasticsearch/
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    container_name: elasticsearch
+    restart: always
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -19,6 +22,8 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
+    container_name: logstash
+    restart: always
     ports:
       - "5000:5000"
     environment:
@@ -32,6 +37,8 @@ services:
     build: kibana/
     volumes:
       - ./kibana/config/:/usr/share/kibana/config
+    container_name: kibana
+    restart: always
     ports:
       - "5601:5601"
     networks:
