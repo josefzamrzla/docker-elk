@@ -12,6 +12,8 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    volumes:
+        - ./cerebro/application.conf:/opt/cerebro/conf/application.conf
 
   elasticsearch:
     build: elasticsearch/
