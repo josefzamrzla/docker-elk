@@ -2,6 +2,14 @@ version: '2'
 
 services:
 
+  cerebro:
+    image: yannart/cerebro:latest
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - elk
+
   elasticsearch:
     build: elasticsearch/
     volumes:
