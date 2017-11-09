@@ -4,11 +4,14 @@ services:
 
   cerebro:
     image: yannart/cerebro:latest
+    container_name: cerebro
     restart: always
     ports:
       - "9000:9000"
     networks:
       - elk
+    depends_on:
+      - elasticsearch
 
   elasticsearch:
     build: elasticsearch/
